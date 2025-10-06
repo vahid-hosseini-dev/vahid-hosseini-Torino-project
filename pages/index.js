@@ -1,7 +1,9 @@
+import LogInModal from "@/components/modals/LogInModal";
+
 export default function Home() {
   return (
     <div>
-      <h3>VHD_Torino</h3>
+      <LogInModal />
     </div>
   );
 }
