@@ -1,15 +1,15 @@
 import api from "@/services/config";
 import toast from "react-hot-toast";
 
-async function SendOtp(phoneNumber) {
+async function CheckOtp(phoneNumber, code) {
   try {
-    console.log(phoneNumber)
-    const res = await api.post("/auth/send-otp", { mobile: phoneNumber });
+    const res = await api.post("/auth/check-otp", {
+      mobile: phoneNumber,
+      code,
+    });
     console.log(res.data);
 
-    toast.success(
-      `${res.data.message || "کد اعتبارسنجی ارسال شد!"} ${res.data.code || ""}`
-    );
+    toast.success("اعتبارسنجی با موفقیت انجام شد ");
     return res.data;
   } catch (err) {
     console.error("خطا در ارسال OTP:", err.response?.data || err.message);
@@ -19,4 +19,4 @@ async function SendOtp(phoneNumber) {
   }
 }
 
-export default SendOtp;
+export default CheckOtp;
