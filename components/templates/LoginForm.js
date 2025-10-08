@@ -46,7 +46,7 @@ function LoginForm() {
         </p>
         <button
           type="submit"
-          className="transition-all duration-30 ease-in-out cursor-pointer w-[278px] h-[54px] border rounded-[6px] bg-[var(--primary-color)] text-white text-lg mt-2 hover:scale-102"
+          className="transition-all duration-30 ease-in-out cursor-pointer w-[278px] h-[54px] border rounded-[6px] bg-[var(--primary-color)] text-white text-lg mt-2 hover:scale-105"
         >
           ارسال کد تایید
         </button>

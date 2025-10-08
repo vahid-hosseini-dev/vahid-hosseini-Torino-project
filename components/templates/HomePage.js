@@ -1,9 +1,16 @@
 import Modal from "../modals/Modal";
+import api from "@/services/config";
+import Card from "../modules/Card";
 
-function HomePage() {
+async function HomePage() {
+  const res = await api.get("/tour", { cache: "no-store" });
+  const data = res.data;
+
   return (
     <div>
-      <Modal />
+      {data.map((item) => (
+        <Card key={item.id} data={item} />
+      ))}
     </div>
   );
 }
