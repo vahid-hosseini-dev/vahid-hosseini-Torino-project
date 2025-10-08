@@ -6,13 +6,13 @@ function NavBar() {
     <div className="flex flex-col">
       <div className="flex justify-around mt-10 ">
         <Image
-          src="./svg/hambergurMenu.svg"
+          src="/svg/hambergurMenu.svg"
           alt="hambergur menu"
           width={34}
           height={34}
         />
         <Image
-          src="./svg/SignInButton.svg"
+          src="/svg/SignInButton.svg"
           alt="sign in"
           width={34}
           height={34}
