@@ -1,21 +1,27 @@
-import api from "@/services/config";
 import toast from "react-hot-toast";
 
 async function CheckOtp(phoneNumber, code) {
   try {
-    const res = await api.post("/auth/check-otp", {
-      mobile: phoneNumber,
-      code,
+    const res = await fetch("/api/auth/check-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mobile: phoneNumber, code }),
     });
-    console.log(res.data);
 
-    toast.success("اعتبارسنجی با موفقیت انجام شد ");
-    return res.data;
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      toast.success("اعتبارسنجی با موفقیت انجام شد");
+      window.location.href = "/";
+    } else {
+      toast.error(data.error || "ارسال کد موفق نبود!");
+    }
+
+    return data;
   } catch (err) {
-    console.error("خطا در ارسال OTP:", err.response?.data || err.message);
-
-    toast.error(err.response?.data?.message || "ارسال کد موفق نبود!");
-    return { success: false, error: err.response?.data || err.message };
+    console.error("خطا در ارسال OTP:", err);
+    toast.error("ارسال کد موفق نبود!");
+    return { success: false, error: err.message || "خطای نامشخص" };
   }
 }
 
