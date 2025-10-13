@@ -36,7 +36,7 @@ function SubmitForm() {
           <span className="text-red-700">{`${Number(phoneNumber).toLocaleString(
             "Fa-IR",
             { useGrouping: false }
-          )}`}</span>{" "}
+          )}`}</span>
           ارسال شد
         </label>
 

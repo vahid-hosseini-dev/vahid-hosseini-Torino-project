@@ -19,6 +19,8 @@ function LoginForm() {
   const onSubmit = async (data) => {
     await SendOtp(data.phoneNumber);
     setPhoneNumber(data.phoneNumber);
+    localStorage.setItem("phoneNumber", data.phoneNumber);
+
     setStep("submit");
   };
 

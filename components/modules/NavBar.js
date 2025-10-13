@@ -3,16 +3,22 @@ import { useUser } from "@/hooks/useUser";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "../modals/Modal";
 import Context from "@/context/Context";
 
 function NavBar() {
-  const { phoneNumber } = useContext(Context);
+  const { phoneNumber, setPhoneNumber } = useContext(Context);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, isLoading } = useUser();
 
+  useEffect(() => {
+    const saved = localStorage.getItem("phoneNumber");
+    if (saved) setPhoneNumber(saved);
+  }, []);
+
   const loggedIn = data?.loggedIn;
+  const phoneNumberToShow = loggedIn ? phoneNumber : null;
 
   return (
     <div className="flex flex-col">
@@ -26,9 +32,11 @@ function NavBar() {
 
         {isLoading ? (
           <span className="text-sm text-gray-500">...</span>
-        ) : loggedIn ? (
+        ) : phoneNumberToShow ? (
           <span className="text-sm font-medium text-green-600">
-            {phoneNumber}
+            {Number(phoneNumber).toLocaleString("fa-IR", {
+              useGrouping: false,
+            })}
           </span>
         ) : (
           <button onClick={() => setIsModalOpen(true)}>
