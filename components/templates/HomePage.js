@@ -1,4 +1,3 @@
-import Modal from "../modals/Modal";
 import api from "@/services/config";
 import Card from "../modules/Card";
 import Header from "../modules/Header";

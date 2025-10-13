@@ -6,10 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import OtpInput from "react18-input-otp";
 import CheckOtp from "@/utils/CheckOtp";
 import { useContext } from "react";
-import UserContext from "@/context/userContext";
+import Context from "@/context/Context";
 
 function SubmitForm() {
-  const { phoneNumber } = useContext(UserContext);
+  const { phoneNumber } = useContext(Context);
   const {
     handleSubmit,
     control,
@@ -32,7 +32,12 @@ function SubmitForm() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <label htmlFor="otp" className="text-right mb-5">
-          کد تایید به شماره {`${phoneNumber}`} ارسال شد
+          کد تایید به شماره{" "}
+          <span className="text-red-700">{`${Number(phoneNumber).toLocaleString(
+            "Fa-IR",
+            { useGrouping: false }
+          )}`}</span>{" "}
+          ارسال شد
         </label>
 
         <Controller

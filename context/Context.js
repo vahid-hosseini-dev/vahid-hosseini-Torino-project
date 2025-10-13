@@ -2,15 +2,16 @@
 
 import { createContext, useState } from "react";
 
-const UserContext = createContext();
+const Context = createContext();
 
 export const UserProvider = ({ children }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [step, setStep] = useState("login");
 
   return (
-    <UserContext.Provider value={{ phoneNumber, setPhoneNumber }}>
+    <Context.Provider value={{ phoneNumber, setPhoneNumber, step, setStep }}>
       {children}
-    </UserContext.Provider>
+    </Context.Provider>
   );
 };
-export default UserContext;
+export default Context;

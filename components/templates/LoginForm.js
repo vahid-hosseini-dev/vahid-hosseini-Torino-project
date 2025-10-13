@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
 import loginFormSchema from "@/schemas/loginFormSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SendOtp from "@/utils/SendOtp";
 import { useContext } from "react";
-import UserContext from "@/context/userContext";
+import Context from "@/context/Context";
 
 function LoginForm() {
-  const { setPhoneNumber } = useContext(UserContext);
+  const { setPhoneNumber, setStep } = useContext(Context);
 
   const {
     register,
@@ -19,6 +19,7 @@ function LoginForm() {
   const onSubmit = async (data) => {
     await SendOtp(data.phoneNumber);
     setPhoneNumber(data.phoneNumber);
+    setStep("submit");
   };
 
   return (
