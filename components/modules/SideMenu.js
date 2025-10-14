@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 
-function SideMenu() {
+function SideMenu({ setIsSideOpen }) {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -8,27 +9,43 @@ function SideMenu() {
     >
       <div className="flex items-center">
         <Image src="/svg/home.svg" alt="home" width={16} height={16} />
-        <p className="text-[16px] mr-2 cursor-pointer text-[#28A745]">
+        <Link
+          onClick={() => setIsSideOpen(false)}
+          href={"/"}
+          className="text-[16px] mr-2 cursor-pointer text-[#28A745]"
+        >
           صفحه اصلی
-        </p>
+        </Link>
       </div>
       <div className="flex items-center">
         <Image src="/svg/airplane.svg" alt="home" width={16} height={16} />
-        <p className="text-[16px] mr-2 cursor-pointer text-[#282828]">
+        <Link
+          onClick={() => setIsSideOpen(false)}
+          href={"/"}
+          className="text-[16px] mr-2 cursor-pointer text-[#282828]"
+        >
           خدمات گردشگری
-        </p>
+        </Link>
       </div>
       <div className="flex items-center">
         <Image src="/svg/volume-low.svg" alt="home" width={16} height={16} />
-        <p className="text-[16px] mr-2 cursor-pointer text-[#282828]">
+        <Link
+          onClick={() => setIsSideOpen(false)}
+          href={"/"}
+          className="text-[16px] mr-2 cursor-pointer text-[#282828]"
+        >
           درباره ما
-        </p>
+        </Link>
       </div>
       <div className="flex items-center">
         <Image src="/svg/call.svg" alt="home" width={16} height={16} />
-        <p className="text-[16px] mr-2 cursor-pointer text-[#282828]">
+        <Link
+          onClick={() => setIsSideOpen(false)}
+          href={"/"}
+          className="text-[16px] mr-2 cursor-pointer text-[#282828]"
+        >
           تماس با ما
-        </p>
+        </Link>
       </div>
     </div>
   );

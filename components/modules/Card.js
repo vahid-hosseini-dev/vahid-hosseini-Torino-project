@@ -1,8 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function Card({ data }) {
-  const { title, price, image, options } = data;
+  const router = useRouter();
+  const { id, title, price, image, options } = data;
+
+  const clickHandler = () => {
+    router.push(`/tour/${id}`);
+  };
 
   return (
     <div className="flex flex-col justify-start w-[327px] h-[277px] m-5 bg-white border border-[#0000001F] rounded-xl overflow-hidden hover:shadow-lg hover:scale-105 transition-all duration-250 ease-in-out">
@@ -21,7 +29,10 @@ function Card({ data }) {
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[99px] h-[29px] cursor-pointer rounded-sm bg-[#28a745] text-center text-[15px] text-white ">
+          <button
+            onClick={clickHandler}
+            className="transition-all duration-30 ease-in-out hover:scale-105 w-[99px] h-[29px] cursor-pointer rounded-sm bg-[#28a745] text-center text-[15px] text-white "
+          >
             رزرو
           </button>
           <div>

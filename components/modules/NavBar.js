@@ -2,12 +2,12 @@
 import { useUser } from "@/hooks/useUser";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useContext, useEffect, useRef, useState } from "react";
 import Modal from "../modals/Modal";
 import Context from "@/context/Context";
 import ProfileMenu from "./ProfileMenu";
 import SideMenu from "./SideMenu";
+import { ThreeDots } from "react-loader-spinner";
 
 function NavBar() {
   const { phoneNumber, setPhoneNumber } = useContext(Context);
@@ -78,10 +78,12 @@ function NavBar() {
           />
 
           {isLoading ? (
-            <span className="text-sm text-gray-500">...</span>
+            <span className="text-sm text-gray-500">
+              <ThreeDots width={50} />
+            </span>
           ) : phoneNumberToShow ? (
             <div className="flex items-center justify-around w-[146px] h-[38px] ">
-              <Image width={14} height={14} alt="icon" src="svg/profile.svg" />
+              <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
               <span className="text-lg font-medium text-green-600">
                 {Number(phoneNumber).toLocaleString("fa-IR", {
                   useGrouping: false,
@@ -93,13 +95,19 @@ function NavBar() {
                 width={14}
                 height={14}
                 alt="icon"
-                src="svg/arrow-down.svg"
+                src="/svg/arrow-down.svg"
               />
 
               {isMenuOpen ? (
-                <ProfileMenu setIsMenuOpen={setIsMenuOpen} phoneNumber={phoneNumber} ref={profileMenuRef} />
+                <ProfileMenu
+                  setIsMenuOpen={setIsMenuOpen}
+                  phoneNumber={phoneNumber}
+                  ref={profileMenuRef}
+                />
               ) : null}
-              {isSideOpen ? <SideMenu ref={sideMenuRef} /> : null}
+              {isSideOpen ? (
+                <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
+              ) : null}
             </div>
           ) : (
             <button onClick={() => setIsModalOpen(true)}>

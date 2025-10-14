@@ -30,25 +30,27 @@ async function TourDetails({ params }) {
   } = data;
 
   return (
-    <div className="flex flex-col justify-start">
+    <div className="flex flex-col justify-start items-center mt-5">
       <div>
         <Image
           src={image}
           alt="tour"
           width={400}
           height={400}
-          className="w-[330px] h-[220px]"
+          className="w-[330px] h-[220px] rounded-xl"
         />
       </div>
-      <div className="flex justify-between">
-        <span>{title}</span>
-        <span>{formatTourDuration(startDate, endDate)}</span>
+      <div className="flex mt-5 items-center">
+        <span className="text-2xl ml-10">{title}</span>
+        <span className="text-[15px]">
+          {formatTourDuration(startDate, endDate)}
+        </span>
       </div>
       <div>
-        <div className="flex justify-between">
-          <Image src={"/svg/user-tick.svg"} alt="icon" width={14} height={14} />{" "}
+        <div className="flex justify-between text-[#7D7D7D] text-[13px] mt-5">
+          <Image src={"/svg/user-tick.svg"} alt="icon" width={14} height={14} />
           <span>تورلیدر از مبدا</span>
-          <Image src={"/svg/map.svg"} alt="icon" width={14} height={14} />{" "}
+          <Image src={"/svg/map.svg"} alt="icon" width={14} height={14} />
           <span>برنامه سفر</span>
           <Image
             src={"/svg/medal-star.svg"}
@@ -59,27 +61,29 @@ async function TourDetails({ params }) {
           <span>تضمین کیفیت</span>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex mt-5 justify-between">
           <Image src={"/svg/bus.svg"} alt="icon" width={14} height={14} />{" "}
-          <span>حمل و نقل</span>
+          <span className="mr-2 ml-7">حمل و نقل</span>
           <Image
             src={"/svg/profile-2user.svg"}
             alt="icon"
             width={14}
             height={14}
           />
-          <span>ظرفیت</span>
+          <span className="mr-2 ml-12">ظرفیت</span>
           <Image src={"/svg/security.svg"} alt="icon" width={14} height={14} />
-          <span>بیمه</span>
+          <span className="mr-2">بیمه</span>
         </div>
-        <div className="flex justify-between">
+        <div className="flex item-center justify-between gap-10 mt-2">
           <span>{fleetVehicle}</span>
+          <span className="">{`حداکثر ${capacity.toLocaleString(
+            "fa-IR"
+          )} نفر`}</span>
           <span>{insurance ? "بیمه مسافرتی" : "شامل بیمه نمی شود"}</span>
-          <span>{`حداکثر ${capacity.toLocaleString("fa-IR")} نفر`}</span>
         </div>
-        <div className="flex justify-between items-center">
-          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white ">
-            رزرو
+        <div className="flex justify-between items-center mt-6">
+          <button className="mb-5 transition-all duration-30 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white ">
+            رزرو و خرید
           </button>
           <div>
             <span className="text-[#009eca] text-[24px]">

@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import Image from "next/image";
+import Link from "next/link";
 import toast from "react-hot-toast";
 
 function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
@@ -33,11 +34,15 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
             height={28}
           />
         </div>
-        <span className="text-[14px] text-[#10411B] cursor-pointer">
+        <Link
+          href={"/"}
+          onClick={() => setIsMenuOpen(false)}
+          className="text-[14px] text-[#10411B] cursor-pointer"
+        >
           {Number(phoneNumber).toLocaleString("Fa-IR", {
             useGrouping: false,
           })}
-        </span>
+        </Link>
       </div>
 
       <div className=" flex items-center justify-around border-b py-2 border-[#0000001F] ">
@@ -47,7 +52,13 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
           width={16}
           height={16}
         />
-        <span className="text-[12px] cursor-pointer">اطلاعات حساب کاربری</span>
+        <Link
+          href={"/"}
+          onClick={() => setIsMenuOpen(false)}
+          className="text-[12px] cursor-pointer"
+        >
+          اطلاعات حساب کاربری
+        </Link>
       </div>
 
       <div className="flex items-center justify-around py-2">

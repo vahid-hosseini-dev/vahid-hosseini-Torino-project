@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function ServerDisconnect() {
   return (
-    <>
+    <div className="flex flex-col items-center justify-center">
       <Image
         className="w-[322px] h-auto"
         width={1000}
@@ -15,12 +15,12 @@ function ServerDisconnect() {
         اتصال با سرور برقرار نیست!
       </h3>
       <Link
-        href="/auth/register"
-        className="flex justify-center items-center font-YekanBakh text-[20px] w-[232px] h-[58px] rounded-2xl text-[#28a745] bg-[#D8FFE1]"
+        href="/"
+        className="cursor-pointer flex justify-center items-center font-YekanBakh text-[20px] w-[232px] h-[58px] rounded-2xl text-[#28a745] bg-[#D8FFE1]"
       >
         بازگشت به صفحه اصلی
       </Link>
-    </>
+    </div>
   );
 }
 
