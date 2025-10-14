@@ -78,11 +78,11 @@ async function TourDetails({ params }) {
           <span>{`حداکثر ${capacity.toLocaleString("fa-IR")} نفر`}</span>
         </div>
         <div className="flex justify-between items-center">
-          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[var(--primary-color)] text-center text-[20px] text-white ">
+          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white ">
             رزرو
           </button>
           <div>
-            <span className="text-[var(--complementry)] text-[24px]">
+            <span className="text-[#009eca] text-[24px]">
               {Number(price).toLocaleString("fa-IR")}
             </span>
             <span className="text-[10px]"> تومان</span>

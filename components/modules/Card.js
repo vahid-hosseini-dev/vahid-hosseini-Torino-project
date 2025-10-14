@@ -21,11 +21,11 @@ function Card({ data }) {
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[99px] h-[29px] cursor-pointer rounded-sm bg-[var(--primary-color)] text-center text-[15px] text-white ">
+          <button className="transition-all duration-30 ease-in-out hover:scale-105 w-[99px] h-[29px] cursor-pointer rounded-sm bg-[#28a745] text-center text-[15px] text-white ">
             رزرو
           </button>
           <div>
-            <span className="text-[var(--complementry)]">
+            <span className="text-[#009eca)]">
               {Number(price).toLocaleString("fa-IR")}
             </span>
             <span> تومان</span>

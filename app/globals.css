@@ -1,13 +1,6 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --primary-color: #28a745;
-    --secondary-color: #10411b;
-    --text-color: #282828;
-    --complementry: #009eca;
-  }
-
   * {
     padding: 0;
     margin: 0;

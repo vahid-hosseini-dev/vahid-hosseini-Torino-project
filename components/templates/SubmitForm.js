@@ -72,7 +72,7 @@ function SubmitForm() {
 
         <button
           type="submit"
-          className="transition-all duration-30 ease-in-out cursor-pointer w-[278px] h-[54px] border border-[rgba(0,0,0,0.25)] rounded-[6px] bg-[var(--primary-color)] text-white text-lg mt-2 hover:scale-105"
+          className="transition-all duration-30 ease-in-out cursor-pointer w-[278px] h-[54px] border border-[rgba(0,0,0,0.25)] rounded-[6px] bg-[#28a745] text-white text-lg mt-2 hover:scale-105"
         >
           ورود به تورینو
         </button>
