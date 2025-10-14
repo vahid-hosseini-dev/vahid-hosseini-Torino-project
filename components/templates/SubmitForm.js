@@ -7,6 +7,7 @@ import OtpInput from "react18-input-otp";
 import CheckOtp from "@/utils/CheckOtp";
 import { useContext } from "react";
 import Context from "@/context/Context";
+import TwoMinuteTimer from "@/utils/Timer";
 
 function SubmitForm() {
   const { phoneNumber } = useContext(Context);
@@ -36,7 +37,7 @@ function SubmitForm() {
           <span className="text-red-700">{`${Number(phoneNumber).toLocaleString(
             "Fa-IR",
             { useGrouping: false }
-          )}`}</span>
+          )}  `}</span>
           ارسال شد
         </label>
 
@@ -69,6 +70,9 @@ function SubmitForm() {
         <p className="text-sm min-h-[20px] mt-5 text-red-400 self-start">
           {errors.otpCode?.message}
         </p>
+        <div className="flex items-center gap-1">
+          <TwoMinuteTimer />
+        </div>
 
         <button
           type="submit"

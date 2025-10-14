@@ -1,6 +1,16 @@
+import Cookies from "js-cookie";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
-function ProfileMenu({ phoneNumber }) {
+function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
+  const removeHandler = () => {
+    Cookies.remove("accessToken");
+    Cookies.remove("refreshToken");
+    toast.error("شما از حساب کاربری خارج شدید");
+    setIsMenuOpen(false);
+    window.location.href = "/";
+  };
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -42,7 +52,10 @@ function ProfileMenu({ phoneNumber }) {
 
       <div className="flex items-center justify-around py-2">
         <Image src={"/svg/logout.svg"} alt="profile" width={16} height={16} />
-        <span className="text-[12px] text-[#D40000] cursor-pointer">
+        <span
+          onClick={removeHandler}
+          className="text-[12px] text-[#D40000] cursor-pointer"
+        >
           خروج از حساب کاربری
         </span>
       </div>

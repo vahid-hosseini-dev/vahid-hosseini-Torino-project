@@ -97,7 +97,7 @@ function NavBar() {
               />
 
               {isMenuOpen ? (
-                <ProfileMenu phoneNumber={phoneNumber} ref={profileMenuRef} />
+                <ProfileMenu setIsMenuOpen={setIsMenuOpen} phoneNumber={phoneNumber} ref={profileMenuRef} />
               ) : null}
               {isSideOpen ? <SideMenu ref={sideMenuRef} /> : null}
             </div>
