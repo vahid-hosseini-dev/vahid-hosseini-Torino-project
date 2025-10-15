@@ -34,15 +34,11 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
             height={28}
           />
         </div>
-        <Link
-          href={"/"}
-          onClick={() => setIsMenuOpen(false)}
-          className="text-[14px] text-[#10411B] cursor-pointer"
-        >
+        <p className="text-[14px] text-[#10411B]">
           {Number(phoneNumber).toLocaleString("Fa-IR", {
             useGrouping: false,
           })}
-        </Link>
+        </p>
       </div>
 
       <div className=" flex items-center justify-around border-b py-2 border-[#0000001F] ">

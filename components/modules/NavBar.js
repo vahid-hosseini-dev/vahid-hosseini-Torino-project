@@ -70,7 +70,7 @@ function NavBar() {
         <div className="flex justify-around mt-10 ">
           <Image
             onClick={sideHandler}
-            className="relative cursor-pointer"
+            className="relative cursor-pointer w-auto h-auto"
             src="/svg/hambergurMenu.svg"
             alt="hambergur menu"
             width={34}

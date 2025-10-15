@@ -1,13 +1,18 @@
 import React from "react";
 import OriginDestination from "../modules/Origin&Destination";
 import DatePicker from "../modules/DatePicker";
+import CityMenu from "../modules/CityMenu";
 
 function SearchBox() {
   return (
     <div>
       <div className="flex justify-between my-2">
-        <OriginDestination pic={"/svg/location.svg"} name={"مبدا"} />
-        <OriginDestination pic={"/svg/global-search.svg"} name={"مقصد"} />
+        <OriginDestination pic={"/svg/location.svg"} name={"مبدا :"} />
+        <OriginDestination pic={"/svg/global-search.svg"} name={"مقصد :"} />
+      </div>
+      <div className="flex item-center justify-between w-[328px] absolute">
+        {/* <CityMenu /> */}
+        {/* <CityMenu /> */}
       </div>
       <div>
         <DatePicker />

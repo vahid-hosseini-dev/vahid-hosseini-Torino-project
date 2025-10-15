@@ -1,6 +1,7 @@
 import api from "@/services/config";
 import Image from "next/image";
 import formatTourDuration from "@/utils/formatTourDuration";
+import ReserveButton from "@/components/modules/ReserveButton";
 
 export const revalidate = 10 * 60;
 
@@ -16,7 +17,6 @@ async function TourDetails({ params }) {
   const res = await api.get(`/tour/${params.tourId}`);
   const data = res.data;
 
-  console.log(data);
   const {
     image,
     title,
@@ -62,7 +62,7 @@ async function TourDetails({ params }) {
         </div>
 
         <div className="flex mt-5 justify-between">
-          <Image src={"/svg/bus.svg"} alt="icon" width={14} height={14} />{" "}
+          <Image src={"/svg/bus.svg"} alt="icon" width={14} height={14} />
           <span className="mr-2 ml-7">حمل و نقل</span>
           <Image
             src={"/svg/profile-2user.svg"}
@@ -81,17 +81,20 @@ async function TourDetails({ params }) {
           )} نفر`}</span>
           <span>{insurance ? "بیمه مسافرتی" : "شامل بیمه نمی شود"}</span>
         </div>
-        <div className="flex justify-between items-center mt-6">
-          <button className="mb-5 transition-all duration-30 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white ">
-            رزرو و خرید
-          </button>
-          <div>
-            <span className="text-[#009eca] text-[24px]">
-              {Number(price).toLocaleString("fa-IR")}
-            </span>
-            <span className="text-[10px]"> تومان</span>
-          </div>
-        </div>
+
+        <ReserveButton
+          className="transition-all duration-300 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white"
+          divClassName="flex items-center justify-between my-5 gap-5"
+          priceClass="text-[#009eca] text-[24px]"
+          textClass="text-[10px]"
+          title={title}
+          price={price}
+          startDate={startDate}
+          endDate={endDate}
+          tourId={params.tourId}
+          redirectTo={"checkout"}
+          buttonName={"رزرو و خرید"}
+        />
       </div>
     </div>
   );
