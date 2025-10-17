@@ -1,10 +1,8 @@
 import api from "@/services/config";
 import Card from "../modules/Card";
-import Header from "../modules/Header";
-import SearchBox from "./SearchBox";
 import ServerDisconnect from "./ServerDisconnect";
 
-async function HomePage() {
+async function TourList() {
   let data = [];
   let error = null;
 
@@ -22,12 +20,6 @@ async function HomePage() {
         <ServerDisconnect />
       ) : (
         <div className="flex flex-col justify-center items-center ">
-          <Header />
-          <h3 className="text-[16px] text-[#595959] mb-2">
-            <span className="text-[#28a745]"> تورینو</span> برگزار کننده بهترین
-            تور های داخلی و خارجی
-          </h3>
-          <SearchBox />
           {data.map((item) => (
             <Card key={item.id} data={item} />
           ))}
@@ -37,4 +29,4 @@ async function HomePage() {
   );
 }
 
-export default HomePage;
+export default TourList;

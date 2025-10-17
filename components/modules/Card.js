@@ -13,7 +13,7 @@ function Card({ data }) {
   };
 
   return (
-    <div className="flex flex-col justify-start w-[327px] h-[277px] m-5 bg-white border border-[#0000001F] rounded-xl overflow-hidden hover:shadow-lg hover:scale-105 transition-all duration-250 ease-in-out">
+    <div className=" flex flex-col justify-start w-[327px] h-[277px] m-5 bg-white border border-[#0000001F] rounded-xl overflow-hidden hover:shadow-lg hover:scale-105 transition-all duration-250 ease-in-out">
       <Image
         className="w-[327px] h-[160px]"
         src={image}

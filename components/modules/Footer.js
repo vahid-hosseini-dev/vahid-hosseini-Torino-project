@@ -27,25 +27,35 @@ function Footer() {
           <div className="flex justify-center md:justify-between md:flex-col-reverse gap-10 my-5 md:my-0">
             <div className="flex flex-wrap max-w-[150px] md:max-w-[500px] justify-start gap-5">
               <Image
+                className="w-[35px][38px]"
                 src="/img/ecunion.png"
                 alt="ecunion"
                 width={35}
                 height={38}
               />
               <Image
+                className="w-[35px] h-[38px]"
                 src="/img/samandehi.png"
                 alt="samandehi"
                 width={35}
                 height={38}
               />
-              <Image src="/img/aira.png" alt="aria" width={35} height={38} />
               <Image
+                className="w-[35px] h-[38px]"
+                src="/img/aira.png"
+                alt="aria"
+                width={35}
+                height={38}
+              />
+              <Image
+                className="w-[35px] h-[38px]"
                 src="/img/state-airline.png"
                 alt="airline"
                 width={35}
                 height={38}
               />
               <Image
+                className="w-[35px] h-[38px]"
                 src="/img/passenger-rights.png"
                 alt="passengers"
                 width={35}
@@ -55,6 +65,7 @@ function Footer() {
 
             <div className="flex flex-col justify-center items-end gap-2">
               <Image
+                className="w-[35px] h-auto"
                 src="/img/Torino.png"
                 alt="Torino"
                 width={100}

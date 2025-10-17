@@ -15,7 +15,7 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="absolute top-20 flex flex-col w-[157px] h-[114px] rounded-xl overflow-hidden border border-[#0000001F] bg-white"
+      className="absolute top-12 flex flex-col w-[157px] h-[114px] rounded-xl overflow-hidden border border-[#0000001F] bg-white"
     >
       <div className="flex items-center justify-around w-[157px] h-[44px] bg-[#F4F4F4]">
         <div className="flex items-center justify-center ">

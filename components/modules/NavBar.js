@@ -36,7 +36,7 @@ function NavBar() {
   useEffect(() => {
     const saved = localStorage.getItem("phoneNumber");
     if (saved) setPhoneNumber(saved);
-  }, []);
+  }, [setPhoneNumber]);
 
   useEffect(() => {
     //Profile Menu
@@ -51,6 +51,7 @@ function NavBar() {
 
   useEffect(() => {
     //Side Menu
+
     function handler(event) {
       if (!sideMenuRef.current?.contains(event.target)) {
         setIsSideOpen(false);
@@ -66,11 +67,11 @@ function NavBar() {
 
   return (
     <>
-      <div className="flex flex-col">
-        <div className="flex justify-around mt-10 ">
+      <div className="flex items-center justify-between w-f mx-auto h-[64px] ">
+        <div className="z-100 flex justify-around w-full h-[64px]  py-3 shadow-sm shadow-[#00000040] fixed bg-[#FFFFFF]">
           <Image
             onClick={sideHandler}
-            className="relative cursor-pointer w-auto h-auto"
+            className="relative cursor-pointer w-[34px] h-[34px]"
             src="/svg/hambergurMenu.svg"
             alt="hambergur menu"
             width={34}
@@ -91,7 +92,7 @@ function NavBar() {
               </span>
               <Image
                 onClick={menuHandler}
-                className="relative cursor-pointer"
+                className="relative cursor-pointer w-[14px] h-[14px]"
                 width={14}
                 height={14}
                 alt="icon"
@@ -104,9 +105,6 @@ function NavBar() {
                   phoneNumber={phoneNumber}
                   ref={profileMenuRef}
                 />
-              ) : null}
-              {isSideOpen ? (
-                <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
               ) : null}
             </div>
           ) : (
@@ -123,6 +121,9 @@ function NavBar() {
         </div>
 
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        {isSideOpen ? (
+          <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
+        ) : null}
 
         {/* <div>
           <Link href="">صفحه اصلی</Link>
