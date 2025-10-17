@@ -3,7 +3,7 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-15">
       <Image
         src={"/img/header.png"}
         alt="header"

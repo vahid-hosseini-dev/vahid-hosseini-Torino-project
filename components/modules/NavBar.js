@@ -67,71 +67,69 @@ function NavBar() {
 
   return (
     <>
-      <div className="flex items-center justify-between w-f mx-auto h-[64px] ">
-        <div className="z-100 flex justify-around w-full h-[64px]  py-3 shadow-sm shadow-[#00000040] fixed bg-[#FFFFFF]">
-          <Image
-            onClick={sideHandler}
-            className="relative cursor-pointer w-[34px] h-[34px]"
-            src="/svg/hambergurMenu.svg"
-            alt="hambergur menu"
-            width={34}
-            height={34}
-          />
+      <div className="z-100 flex justify-around w-full h-[64px] py-3 shadow-sm shadow-[#00000040] fixed top-0 left-0 bg-[#FFFFFF]">
+        <Image
+          onClick={sideHandler}
+          className="relative cursor-pointer w-[34px] h-[34px]"
+          src="/svg/hambergurMenu.svg"
+          alt="hambergur menu"
+          width={34}
+          height={34}
+        />
 
-          {isLoading ? (
-            <span className="text-sm text-gray-500">
-              <ThreeDots width={50} />
+        {isLoading ? (
+          <span className="text-sm text-gray-500">
+            <ThreeDots width={50} />
+          </span>
+        ) : phoneNumberToShow ? (
+          <div className="flex items-center justify-around w-[146px] h-[38px] ">
+            <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
+            <span className="text-lg font-medium text-green-600">
+              {Number(phoneNumber).toLocaleString("fa-IR", {
+                useGrouping: false,
+              })}
             </span>
-          ) : phoneNumberToShow ? (
-            <div className="flex items-center justify-around w-[146px] h-[38px] ">
-              <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
-              <span className="text-lg font-medium text-green-600">
-                {Number(phoneNumber).toLocaleString("fa-IR", {
-                  useGrouping: false,
-                })}
-              </span>
-              <Image
-                onClick={menuHandler}
-                className="relative cursor-pointer w-[14px] h-[14px]"
-                width={14}
-                height={14}
-                alt="icon"
-                src="/svg/arrow-down.svg"
+            <Image
+              onClick={menuHandler}
+              className="relative cursor-pointer w-[14px] h-[14px]"
+              width={14}
+              height={14}
+              alt="icon"
+              src="/svg/arrow-down.svg"
+            />
+
+            {isMenuOpen ? (
+              <ProfileMenu
+                setIsMenuOpen={setIsMenuOpen}
+                phoneNumber={phoneNumber}
+                ref={profileMenuRef}
               />
+            ) : null}
+          </div>
+        ) : (
+          <button onClick={() => setIsModalOpen(true)}>
+            <Image
+              className="cursor-pointer hover:scale-105 transition-all duration-75 ease-in-out"
+              src="/svg/SignInButton.svg"
+              alt="sign in"
+              width={34}
+              height={34}
+            />
+          </button>
+        )}
+      </div>
 
-              {isMenuOpen ? (
-                <ProfileMenu
-                  setIsMenuOpen={setIsMenuOpen}
-                  phoneNumber={phoneNumber}
-                  ref={profileMenuRef}
-                />
-              ) : null}
-            </div>
-          ) : (
-            <button onClick={() => setIsModalOpen(true)}>
-              <Image
-                className="cursor-pointer hover:scale-105 transition-all duration-75 ease-in-out"
-                src="/svg/SignInButton.svg"
-                alt="sign in"
-                width={34}
-                height={34}
-              />
-            </button>
-          )}
-        </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      {isSideOpen ? (
+        <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
+      ) : null}
 
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        {isSideOpen ? (
-          <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
-        ) : null}
-
-        {/* <div>
+      {/* <div>
           <Link href="">صفحه اصلی</Link>
           <Link href="">خدمات گردشگری</Link>
           <Link href="">درباره ما</Link>
           <Link href="">تماس با ما</Link>
         </div> */}
-      </div>
     </>
   );
 }

@@ -12,7 +12,7 @@ function Tabs({ setCurrentComponent }) {
   };
 
   return (
-    <div className="absolute top-15 flex items-center justify-around my-3 pt-2 w-[328px] border-b border-[#00000040] text-[12px]">
+    <div className="absolute top-15 flex items-center justify-around pt-2 w-[328px] border-b border-[#00000040] text-[12px] ">
       <div className="flex gap-2 items-center w-[77px] leading-8">
         <Image
           src={"/svg/profile.svg"}
@@ -24,7 +24,7 @@ function Tabs({ setCurrentComponent }) {
         <button
           className={`cursor-pointer ${
             activeTab === "profile"
-              ? "text-[#28A745]  border-b-2 border-[28A745]"
+              ? "text-[#28A745]  border-b-2 border-[#28A745]"
               : ""
           }`}
           value={"profile"}
@@ -44,7 +44,7 @@ function Tabs({ setCurrentComponent }) {
         <button
           className={`cursor-pointer ${
             activeTab === "myTours"
-              ? "text-[#28A745] border-b-2 border-[28A745]"
+              ? "text-[#28A745] border-b-2 border-[#28A745]"
               : ""
           }`}
           value={"myTours"}
@@ -64,7 +64,7 @@ function Tabs({ setCurrentComponent }) {
         <button
           className={`cursor-pointer ${
             activeTab === "transaction"
-              ? "text-[#28A745] border-b-2 border-[28A745]"
+              ? "text-[#28A745] border-b-2 border-[#28A745]"
               : ""
           }`}
           value={"transaction"}

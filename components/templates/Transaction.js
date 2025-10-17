@@ -1,9 +1,8 @@
 function Transaction() {
   return (
     <>
-      <div className="flex flex-col justify-between items-center mt-5">
-
-        <table className="w-full border-separate border-[#0000001F] border rounded-lg overflow-hidden">
+      <div className=" justify-between items-center mt-20">
+        <table className="w-full h-auto border-separate border-[#0000001F] border rounded-lg overflow-hidden">
           <thead>
             <tr className="bg-[#F8F8F8]">
               <th className="border-b border-[#DBDBDB] py-2 px-4 text-center text-[12px] text-[#282828CC]">

@@ -1,6 +1,8 @@
+import Context from "@/context/Context";
 import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 
 function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
@@ -49,7 +51,7 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
           height={16}
         />
         <Link
-          href={"/"}
+          href={"/profile"}
           onClick={() => setIsMenuOpen(false)}
           className="text-[12px] cursor-pointer"
         >
