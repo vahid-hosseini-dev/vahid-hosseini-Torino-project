@@ -11,12 +11,12 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(
-  (config) => {
+  (req) => {
     const accessToken = Cookies.get("accessToken");
     if (accessToken) {
-      config.headers["Authorization"] = `Bearer ${accessToken}`;
+      req.headers["Authorization"] = `Bearer ${accessToken}`;
     }
-    return config;
+    return req;
   },
   (error) => Promise.reject(error)
 );

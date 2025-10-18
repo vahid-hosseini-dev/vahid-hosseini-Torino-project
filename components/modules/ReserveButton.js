@@ -17,7 +17,7 @@ function ReserveButton({
 }) {
   const router = useRouter();
 
-  const handleReserve = () => {
+  const reserveHandler = () => {
     router.push(
       `/${redirectTo}?title=${encodeURIComponent(
         title
@@ -27,7 +27,7 @@ function ReserveButton({
 
   return (
     <div className={divClassName}>
-      <button onClick={handleReserve} className={className}>
+      <button onClick={reserveHandler} className={className}>
         {buttonName}
       </button>
       <div>

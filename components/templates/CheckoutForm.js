@@ -7,16 +7,48 @@ import { useSearchParams } from "next/navigation";
 import formatTourDuration from "@/utils/formatTourDuration";
 import checkoutFormSchema from "@/schemas/checkoutFormSchema";
 import { DatePicker } from "zaman";
-
-const onSubmit = () => {};
+import api from "@/services/config";
+import { useState } from "react";
 
 function CheckoutForm() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
   const searchParams = useSearchParams();
   const price = searchParams.get("price");
   const title = searchParams.get("title");
   const tourId = searchParams.get("id");
   const startDate = searchParams.get("start");
   const endDate = searchParams.get("end");
+
+  const onSubmit = async (formData) => {
+    const formattedBirthDate = new Date(formData.birthDate)
+      .toISOString()
+      .split("T")[0];
+    console.log(formattedBirthDate);
+
+    try {
+      const res = await api.post(
+        "/order",
+        {
+          nationalCode: formData.nationalCode,
+          fullName: formData.fullName,
+          gender: formData.gender,
+          birthDate: formattedBirthDate,
+        },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setData(res.data);
+    } catch (err) {
+      setError(err);
+      console.log(err);
+    }
+  };
 
   const {
     register,
@@ -27,7 +59,7 @@ function CheckoutForm() {
 
   return (
     <>
-      <div className="flex flex-col justify-center px-5 my-10 w-[328px] h-[359px] border border-[#00000033] rounded-[10px]">
+      <div className="flex flex-col justify-center px-5 mt-25 mb-5 w-[328px] h-[359px] border border-[#00000033] rounded-[10px]">
         <div className="flex">
           <Image
             src={"/svg/profile1.svg"}
@@ -113,6 +145,7 @@ function CheckoutForm() {
               <span className="text-[14px] text-black"> تومان</span>
             </span>
           </div>
+
           <button
             type="submit"
             className="mb-5 transition-all duration-300 ease-in-out hover:scale-105 w-[302px] h-[56px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white"

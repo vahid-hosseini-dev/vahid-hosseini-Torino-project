@@ -22,7 +22,6 @@ async function TourDetails({ params }) {
     title,
     startDate,
     endDate,
-    options,
     insurance,
     capacity,
     fleetVehicle,
@@ -30,7 +29,7 @@ async function TourDetails({ params }) {
   } = data;
 
   return (
-    <div className="flex flex-col justify-start items-center mt-5">
+    <div className="flex flex-col justify-start items-center mt-15">
       <div>
         <Image
           src={image}
@@ -76,9 +75,7 @@ async function TourDetails({ params }) {
         </div>
         <div className="flex item-center justify-between gap-10 mt-2">
           <span>{fleetVehicle}</span>
-          <span className="">{`حداکثر ${capacity.toLocaleString(
-            "fa-IR"
-          )} نفر`}</span>
+          <span>{capacity}</span>
           <span>{insurance ? "بیمه مسافرتی" : "شامل بیمه نمی شود"}</span>
         </div>
 

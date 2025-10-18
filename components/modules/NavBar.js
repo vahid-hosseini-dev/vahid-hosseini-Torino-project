@@ -1,6 +1,7 @@
 "use client";
 import { useUser } from "@/hooks/useUser";
 
+import { refreshAccessToken } from "@/utils/RefreshToken";
 import Image from "next/image";
 import { useContext, useEffect, useRef, useState } from "react";
 import Modal from "../modals/Modal";
@@ -63,7 +64,9 @@ function NavBar() {
   //---------------End of UseEffects --------------------------
 
   const loggedIn = data?.loggedIn;
-  const phoneNumberToShow = loggedIn ? phoneNumber : null;
+  {
+    !loggedIn ? refreshAccessToken() : phoneNumber;
+  }
 
   return (
     <>
@@ -81,7 +84,7 @@ function NavBar() {
           <span className="text-sm text-gray-500">
             <ThreeDots width={50} />
           </span>
-        ) : phoneNumberToShow ? (
+        ) : phoneNumber ? (
           <div className="flex items-center justify-around w-[146px] h-[38px] ">
             <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
             <span className="text-lg font-medium text-green-600">
