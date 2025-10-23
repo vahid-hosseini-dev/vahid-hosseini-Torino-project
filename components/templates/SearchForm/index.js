@@ -8,18 +8,16 @@ import cities from "@/data/cities";
 
 import { useRouter } from "next/navigation";
 import useQuery from "@/hooks/query";
-import { flattenObject } from "@/utils/helpers";
+import { flattenObject } from "@/utils/Helpers";
 import { useGetTours } from "@/services/queries";
-import ServerDisconnect from "../ServerDisconnect";
-import { ThreeCircles } from "react-loader-spinner";
+import convertToJalali from "@/utils/FormatJalaliDate";
 
 function SearchForm() {
   const [query, setQuery] = useState({});
 
   const router = useRouter();
   const { register, handleSubmit, control, reset } = useForm();
-  const { data, isPending, isError, refetch } = useGetTours(query);
-
+  const { data, isPending, refetch } = useGetTours(query);
   const { getQuery } = useQuery();
 
   //   useEffect(() => {
@@ -29,7 +27,15 @@ function SearchForm() {
   useEffect(() => {
     const originId = getQuery("originId");
     const destinationId = getQuery("destinationId");
-    if (originId && destinationId) reset({ originId, destinationId });
+    const startDate = convertToJalali(getQuery("startDate"));
+    const endDate = convertToJalali(getQuery("endDate"));
+
+    if (originId || destinationId || startDate || endDate)
+      reset({
+        originId,
+        destinationId,
+        date: { from: startDate, to: endDate },
+      });
   }, []);
 
   const submitHandler = (form) => {
@@ -37,10 +43,6 @@ function SearchForm() {
     const query = QueryString.stringify(flattenObject(form));
     router.push(`/?${query}`);
   };
-
-  // if (isPending) {
-  //   return <ThreeCircles />;
-  // }
 
   return (
     <form
@@ -80,7 +82,7 @@ function SearchForm() {
           </option>
           {cities.map((city) => (
             <option
-              className="text-[14px] text-[#282828B2] py-2 px-2 w-[160px] h-[35px]"
+              className="text-[14px] text-[#282828B2] py-2 px-2 w-[160px] h-[35px] "
               key={city.id}
               value={city.id}
             >
@@ -93,8 +95,9 @@ function SearchForm() {
       <Controller
         control={control}
         name="date"
-        render={({ field: { onChange } }) => (
+        render={({ field: { onChange, value } }) => (
           <DatePicker
+            value={value && { from: value?.startDate, to: value?.endDate }}
             onChange={(e) => onChange({ startDate: e.from, endDate: e.to })}
             range
             inputClass=" outline-0 text-center gap-2 w-[328px] h-[47px] bg-white border border-[#00000026] rounded-xl"

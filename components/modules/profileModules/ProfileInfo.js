@@ -1,35 +1,42 @@
-"use state";
-import Context from "@/context/Context";
+"use client";
+
 import { editProfile } from "@/services/queries";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-function ProfileInfo() {
-  const [mail, setMail] = useState("");
-  const { phoneNumber } = useContext(Context);
+function ProfileInfo({ formData, setFormData }) {
+  console.log(formData);
+  const [email, setEmail] = useState();
   const [show, setShow] = useState("");
   const [btnVisible, setBtnVisible] = useState(true);
 
   const emailHandler = (e) => {
-    setMail(e.target.value);
+    const newEmail = e.target.value;
+    setEmail(newEmail);
 
-    console.log(mail);
+    setFormData((prevData) => ({
+      ...prevData,
+      email: newEmail,
+    }));
   };
 
   const submitHandler = async () => {
     try {
-      const response = await editProfile(mail);
+      const response = await editProfile(formData);
+
       if (response) {
         console.log("Profile updated successfully:", response);
         const res = response;
-        return res;
+        toast.success(res.message);
+        console.log(res);
       }
     } catch (error) {
       console.error("Error updating profile:", error);
+      toast.error(error.message);
     }
-    setShow(false);
-    setBtnVisible(true);
   };
+
 
   return (
     <>
@@ -39,7 +46,7 @@ function ProfileInfo() {
         <div className="flex justify-between items-center mt-5">
           <span>شماره موبایل</span>
           <span>
-            {Number(phoneNumber).toLocaleString("Fa-IR", {
+            {Number(formData.mobile).toLocaleString("Fa-IR", {
               useGrouping: false,
             })}
           </span>
@@ -49,14 +56,18 @@ function ProfileInfo() {
           <div className="flex justify-between mt-5">
             <input
               onChange={emailHandler}
-              value={mail}
+              value={email || ""}
               type="text"
               placeholder="آدرس ایمیل"
               className="outline-0 px-3 text-[12px] border border-[#00000050] rounded-[5px] w-[186px] h-[40px]"
             />
 
             <button
-              onClick={submitHandler}
+              onClick={() => {
+                submitHandler();
+                setShow(false);
+                setBtnVisible(true);
+              }}
               className="cursor-pointer w-[93px] h-[40px] rounded-[5px] bg-[#28A745] text-white text-[16px]"
             >
               تایید
@@ -64,7 +75,11 @@ function ProfileInfo() {
           </div>
         ) : (
           <div className="flex gap-3 mt-10 justify-between">
-            <span> ایمیل   </span>
+            {formData.email ? (
+              <span> {formData.email}</span>
+            ) : (
+              <span> ایمیل </span>
+            )}
 
             {btnVisible && (
               <div className="flex gap-2">

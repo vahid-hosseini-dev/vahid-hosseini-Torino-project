@@ -1,6 +1,8 @@
 "use client";
 
+import api from "@/services/config";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 function ReserveButton({
   title,
@@ -13,11 +15,14 @@ function ReserveButton({
   className,
   divClassName,
   priceClass,
-  textClass
+  textClass,
 }) {
   const router = useRouter();
 
-  const reserveHandler = () => {
+  const reserveHandler = async () => {
+    const res = await api.put(`/basket/${tourId}`);
+    toast.success(res.data.message);
+
     router.push(
       `/${redirectTo}?title=${encodeURIComponent(
         title

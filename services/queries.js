@@ -34,9 +34,27 @@ const fetchTours = async ({ originId, destinationId, startDate }) => {
   }
 };
 
-const editProfile = async (email) => {
+const editProfile = async (
+  mobile,
+  email,
+  firstName,
+  lastName,
+  gender,
+  birthDate,
+  nationalCode,
+  payment
+) => {
   try {
-    const response = await api.put("user/profile", { email });
+    const response = await api.put("user/profile", {
+      mobile,
+      email,
+      firstName,
+      lastName,
+      gender,
+      birthDate,
+      nationalCode,
+      payment,
+    });
     return response.data;
   } catch (error) {
     console.error(error);

@@ -15,16 +15,11 @@ const serverFetch = async (
 
   try {
     const res = await fetch(`${url}`, cache);
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch: ${res.statusText}`);
-    }
-
     const json = await res.json();
     return json;
   } catch (err) {
-    console.error("Error fetching data:", err);
-    return { error: true };
+    console.log(err);
+    return false;
   }
 };
 

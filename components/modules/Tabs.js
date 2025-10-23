@@ -59,7 +59,7 @@ function Tabs({ setCurrentComponent }) {
           alt="profile"
           width={16}
           height={16}
-          className="w-[16px] h-auto"
+          className="w-[16px] h-[16px]"
         />
         <button
           className={`cursor-pointer ${
