@@ -10,13 +10,16 @@ import { useRouter } from "next/navigation";
 import useQuery from "@/hooks/query";
 import { flattenObject } from "@/utils/helpers";
 import { useGetTours } from "@/services/queries";
+import ServerDisconnect from "../ServerDisconnect";
+import { ThreeCircles } from "react-loader-spinner";
 
 function SearchForm() {
   const [query, setQuery] = useState({});
 
   const router = useRouter();
   const { register, handleSubmit, control, reset } = useForm();
-  const { data, isPending, refetch } = useGetTours(query);
+  const { data, isPending, isError, refetch } = useGetTours(query);
+
   const { getQuery } = useQuery();
 
   //   useEffect(() => {
@@ -34,6 +37,10 @@ function SearchForm() {
     const query = QueryString.stringify(flattenObject(form));
     router.push(`/?${query}`);
   };
+
+  // if (isPending) {
+  //   return <ThreeCircles />;
+  // }
 
   return (
     <form

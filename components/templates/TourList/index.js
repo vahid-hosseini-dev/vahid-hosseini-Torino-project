@@ -1,8 +1,6 @@
 import Card from "../../modules/Card";
-import ServerDisconnect from "../ServerDisconnect";
 
 async function TourList({ tourData }) {
-
   if (!tourData?.length) return <p> تور یافت نشد</p>;
 
   return (

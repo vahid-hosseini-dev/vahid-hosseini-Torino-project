@@ -1,4 +1,3 @@
-import api from "@/services/config";
 import { fetchProfile } from "@/services/queries";
 import { cookies } from "next/headers";
 
