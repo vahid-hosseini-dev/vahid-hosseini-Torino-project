@@ -1,19 +1,37 @@
 "use client";
 
-import { useGetUserData } from "@/services/queries";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { ThreeDots } from "react-loader-spinner";
+import toast from "react-hot-toast";
+import { useProfile } from "@/services/queries";
+import Cookies from "js-cookie";
 
 function AuthProvider({ children }) {
-  const router = useRouter();
-  const { data, isPending } = useGetUserData();
+  const accessToken = Cookies.get("accessToken");
+  const { data, isPending, isError } = useProfile(accessToken);
 
   useEffect(() => {
-    if (!isPending && !data?.data) router.push("/");
-  }, [isPending]);
+    if (!accessToken) {
+      window.location.href = "/";
+    }
+  }, [accessToken]);
 
-  if (isPending) return <p>loading ... </p>;
+  useEffect(() => {
+    if (!isPending && !data) {
+      window.location.href = "/";
+    }
+  }, [data, isPending]);
+
+  if (isPending) {
+    return <ThreeDots />;
+  }
+
+  if (isError) {
+    toast.error("لطفا دوباره لاگین کنید");
+    return <p>لطفا دوباره لاگین کنید</p>;
+  }
 
   return <div>{children}</div>;
 }
+
 export default AuthProvider;

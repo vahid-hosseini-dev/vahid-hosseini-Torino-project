@@ -6,7 +6,6 @@ export const refreshAccessToken = async () => {
     const refreshToken = Cookies.get("refreshToken");
 
     if (!refreshToken) {
-      console.error("Refresh token not available");
       return null;
     }
 

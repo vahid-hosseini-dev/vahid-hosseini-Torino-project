@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import LoginForm from "../templates/LoginForm";
-import SubmitForm from "../templates/SubmitForm";
+import LoginForm from "../templates/authForm/LoginForm";
+import SubmitForm from "../templates/authForm/SubmitForm";
 import { useContext } from "react";
 import Context from "@/context/Context";
 

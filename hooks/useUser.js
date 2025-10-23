@@ -9,7 +9,6 @@ export function useUser() {
       const res = await axios.get("/api/auth/check-login", {
         withCredentials: true,
       });
-      console.log(res.status);
 
       if (res.status !== 200) throw new Error("User not logged in");
       return res.data;

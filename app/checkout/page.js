@@ -1,4 +1,4 @@
-import CheckoutForm from "@/components/templates/CheckoutForm";
+import CheckoutForm from "@/components/templates/authForm/CheckoutForm";
 
 function Checkout() {
   return (
