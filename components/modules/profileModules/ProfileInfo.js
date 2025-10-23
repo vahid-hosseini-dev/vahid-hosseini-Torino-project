@@ -1,12 +1,16 @@
 "use client";
 
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { editProfile } from "@/services/queries";
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-function ProfileInfo({ formData, setFormData }) {
-  console.log(formData);
+function ProfileInfo() {
+  const [formData, setFormData] = useLocalStorage("userProfileData", {
+    email: "",
+  });
+
   const [email, setEmail] = useState();
   const [show, setShow] = useState("");
   const [btnVisible, setBtnVisible] = useState(true);
@@ -37,7 +41,7 @@ function ProfileInfo({ formData, setFormData }) {
     }
   };
 
-
+  const phoneNumber = localStorage.getItem("phoneNumber");
   return (
     <>
       <div className="w-[328px] h-[169px] border border-[#00000033] rounded-[10px] p-5 mt-30 bg-white">
@@ -46,7 +50,7 @@ function ProfileInfo({ formData, setFormData }) {
         <div className="flex justify-between items-center mt-5">
           <span>شماره موبایل</span>
           <span>
-            {Number(formData.mobile).toLocaleString("Fa-IR", {
+            {Number(phoneNumber).toLocaleString("Fa-IR", {
               useGrouping: false,
             })}
           </span>

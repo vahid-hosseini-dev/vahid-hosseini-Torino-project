@@ -9,6 +9,7 @@ import Context from "@/context/Context";
 import ProfileMenu from "./ProfileMenu";
 import SideMenu from "./SideMenu";
 import { ThreeDots } from "react-loader-spinner";
+import { fetchProfile } from "@/services/queries";
 
 function NavBar() {
   const { phoneNumber, setPhoneNumber } = useContext(Context);
@@ -35,6 +36,9 @@ function NavBar() {
 
   //---------------UseEffects ------------------------------
   useEffect(() => {
+    const res = fetchProfile();
+    setPhoneNumber(res.mobile);
+
     const saved = localStorage.getItem("phoneNumber");
     if (saved) setPhoneNumber(saved);
   }, [setPhoneNumber]);
@@ -65,7 +69,9 @@ function NavBar() {
 
   const loggedIn = data?.loggedIn;
   const phoneNumberToShow = loggedIn ? phoneNumber : null;
-  {!loggedIn && refreshAccessToken()}
+  {
+    !loggedIn && refreshAccessToken();
+  }
 
   return (
     <>

@@ -1,7 +1,42 @@
+import { useState, useEffect } from "react";
+import { ThreeDots } from "react-loader-spinner";
+import api from "@/services/config";
+
 function Transaction() {
+  const [tourData, setTourData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await api.get("/basket");
+
+        const { id, price } = res.data;
+
+        setTourData({
+          id,
+          price,
+        });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!tourData) {
+    return (
+      <div>
+        <ThreeDots />
+      </div>
+    );
+  }
+
+  const currentDate = new Date().toLocaleString();
+
   return (
     <>
-      <div className=" justify-between items-center mt-20">
+      <div className="justify-between items-center mt-20">
         <table className="w-full h-auto border-separate border-[#0000001F] border rounded-lg overflow-hidden">
           <thead>
             <tr className="bg-[#F8F8F8]">
@@ -18,24 +53,11 @@ function Transaction() {
           </thead>
           <tbody>
             <tr>
-              <td className=" py-2 px-4">2025/10/17 12:00</td>
-              <td className=" py-2 px-4">100,000</td>
-              <td className=" py-2 px-4">123456789</td>
-            </tr>
-            <tr>
-              <td className=" py-2 px-4">2025/10/18 14:30</td>
-              <td className=" py-2 px-4">150,000</td>
-              <td className=" py-2 px-4">987654321</td>
-            </tr>
-            <tr>
-              <td className=" py-2 px-4">2025/10/19 16:45</td>
-              <td className=" py-2 px-4">200,000</td>
-              <td className=" py-2 px-4">112233445</td>
-            </tr>
-            <tr>
-              <td className=" py-2 px-4">2025/10/20 18:00</td>
-              <td className=" py-2 px-4">250,000</td>
-              <td className=" py-2 px-4">556677889</td>
+              <td className="py-2 px-4 text-[12px]">{currentDate}</td>
+              <td className="py-2 px-4 text-[12px]">{tourData.price}</td>
+              <td className="py-2 px-4 text-[12px]">
+                {tourData.id.slice(0, 6)}
+              </td>
             </tr>
           </tbody>
         </table>

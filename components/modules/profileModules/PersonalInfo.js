@@ -4,8 +4,18 @@ import { editProfile } from "@/services/queries";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-function PersonalInfo({ formData, setFormData }) {
+function PersonalInfo() {
+  const [formData, setFormData] = useLocalStorage("userFormData", {
+    firstName: "",
+    lastName: "",
+    nationalCode: "",
+    gender: "",
+    birthDate: "",
+    fullName: "",
+  });
+
   const [show, setShow] = useState("");
   const [btnVisible, setBtnVisible] = useState(true);
 
@@ -140,7 +150,10 @@ function PersonalInfo({ formData, setFormData }) {
           <div>
             <div className="flex justify-between items-center my-5">
               {formData.firstName || formData.lastName ? (
-                <span> {`${formData.firstName} ${formData.lastName}`}</span>
+                <span>
+                  {" "}
+                  {`نام و نام خانوادگی : ${formData.firstName} ${formData.lastName}`}
+                </span>
               ) : (
                 <div>
                   <span> نام و نام خانوادگی : </span>
@@ -150,7 +163,7 @@ function PersonalInfo({ formData, setFormData }) {
 
             <div className="flex justify-between items-center my-5">
               {formData.nationalCode ? (
-                <span> {formData.nationalCode} </span>
+                <span> {`کد ملی : ${formData.nationalCode}`} </span>
               ) : (
                 <div>
                   <span> کد ملی : </span>
@@ -160,7 +173,7 @@ function PersonalInfo({ formData, setFormData }) {
 
             <div className="flex justify-between items-center my-5">
               {formData.gender ? (
-                <span>{formData.gender}</span>
+                <span>{`جنسیت : ${formData.gender}`}</span>
               ) : (
                 <div>
                   <span>جنسیت : </span>

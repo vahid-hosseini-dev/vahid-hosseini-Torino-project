@@ -4,12 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
-import formatTourDuration from "@/utils/FormatTourDuration";
 import checkoutFormSchema from "@/schemas/checkoutFormSchema";
 import { DatePicker } from "zaman";
 import api from "@/services/config";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import formatTourDuration from "@/utils/formatTourDuration";
 
 function CheckoutForm() {
   const [data, setData] = useState(null);
@@ -149,7 +149,6 @@ function CheckoutForm() {
 
           <button
             onClick={() => {
-              const res = api.get("/truncate");
               toast.success("در حال هدایت به درگاه پرداخت ");
               console.log(res);
             }}

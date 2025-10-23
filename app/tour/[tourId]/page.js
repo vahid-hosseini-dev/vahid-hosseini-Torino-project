@@ -1,7 +1,7 @@
 import api from "@/services/config";
 import Image from "next/image";
-import formatTourDuration from "@/utils/FormatTourDuration";
 import ReserveButton from "@/components/modules/ReserveButton";
+import formatTourDuration from "@/utils/formatTourDuration";
 
 export const revalidate = 10 * 60;
 
@@ -80,7 +80,6 @@ async function TourDetails({ params }) {
         </div>
 
         <ReserveButton
-        
           className="transition-all duration-300 ease-in-out hover:scale-105 w-[154px] h-[42px] cursor-pointer rounded-[10px] bg-[#28a745] text-center text-[20px] text-white"
           divClassName="flex items-center justify-between my-5 gap-5"
           priceClass="text-[#009eca] text-[24px]"

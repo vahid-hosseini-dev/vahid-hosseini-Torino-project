@@ -1,12 +1,19 @@
 "use client";
 
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { editProfile } from "@/services/queries";
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-function AccountInfo({ formData, setFormData }) {
-  const [show, setShow] = useState("");
+function AccountInfo() {
+  const [formData, setFormData] = useLocalStorage("accountInfo", {
+    debitCard_code: "",
+    shaba_code: "",
+    accountIdentifier: "",
+  });
+
+  const [show, setShow] = useState(false);
   const [btnVisible, setBtnVisible] = useState(true);
 
   const changeHandler = (e) => {
@@ -26,7 +33,6 @@ function AccountInfo({ formData, setFormData }) {
         const res = response;
         toast.success(res.message);
         console.log(res);
-
         return res;
       }
     } catch (error) {
@@ -34,6 +40,10 @@ function AccountInfo({ formData, setFormData }) {
       toast.error(error.message);
     }
   };
+
+  if (!formData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -71,7 +81,7 @@ function AccountInfo({ formData, setFormData }) {
             <div className="flex flex-col gap-3 justify-between items-center mt-5">
               <input
                 onChange={changeHandler}
-                value={formData.debitCard_code || " "}
+                value={formData.debitCard_code || ""}
                 type="text"
                 placeholder="شماره کارت"
                 name="debitCard_code"
@@ -79,7 +89,7 @@ function AccountInfo({ formData, setFormData }) {
               />
               <input
                 onChange={changeHandler}
-                value={formData.shaba_code || " "}
+                value={formData.shaba_code || ""}
                 type="text"
                 placeholder="شماره شبا"
                 name="shaba_code"
@@ -87,7 +97,7 @@ function AccountInfo({ formData, setFormData }) {
               />
               <input
                 onChange={changeHandler}
-                value={formData.accountIdentifier || " "}
+                value={formData.accountIdentifier || ""}
                 type="text"
                 placeholder="شماره حساب"
                 name="accountIdentifier"
@@ -98,7 +108,10 @@ function AccountInfo({ formData, setFormData }) {
             <div className="flex justify-between mt-5">
               <button
                 className="cursor-pointer w-[138px] h-[40px] rounded-[5px] bg-[#28A745] text-white text-[16px]"
-                onClick={submitHandler}
+                onClick={() => {
+                  submitHandler(), setShow((prev) => !prev);
+                  setBtnVisible((prev) => !prev);
+                }}
               >
                 تایید
               </button>
@@ -116,8 +129,8 @@ function AccountInfo({ formData, setFormData }) {
         ) : (
           <div>
             <div className="flex justify-between items-center my-5">
-              {formData.payment.debitCard_code ? (
-                <span>{formData.payment.debitCard_code}</span>
+              {formData.debitCard_code ? (
+                <span>{`شماره کارت : ${formData.debitCard_code}`}</span>
               ) : (
                 <div>
                   <span> شماره کارت : </span>
@@ -125,8 +138,8 @@ function AccountInfo({ formData, setFormData }) {
               )}
             </div>
             <div className="flex justify-between items-center my-5">
-              {formData.payment.accountIdentifier ? (
-                <span>{formData.payment.accountIdentifier}</span>
+              {formData.accountIdentifier ? (
+                <span>{`شماره حساب : ${formData.accountIdentifier}`}</span>
               ) : (
                 <div>
                   <span> شماره حساب : </span>
@@ -134,8 +147,8 @@ function AccountInfo({ formData, setFormData }) {
               )}
             </div>
             <div className="flex justify-between items-center my-5">
-              {formData.payment.shaba_code ? (
-                <span>{formData.payment.shaba_code}</span>
+              {formData.shaba_code ? (
+                <span>{`شماره شبا : ${formData.shaba_code}`}</span>
               ) : (
                 <div>
                   <span> شماره شبا : </span>

@@ -8,7 +8,7 @@ import cities from "@/data/cities";
 
 import { useRouter } from "next/navigation";
 import useQuery from "@/hooks/query";
-import { flattenObject } from "@/utils/Helpers";
+import { flattenObject } from "@/utils/helpers";
 import { useGetTours } from "@/services/queries";
 import convertToJalali from "@/utils/FormatJalaliDate";
 
