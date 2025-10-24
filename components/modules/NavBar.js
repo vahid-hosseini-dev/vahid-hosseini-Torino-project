@@ -10,6 +10,7 @@ import ProfileMenu from "./ProfileMenu";
 import SideMenu from "./SideMenu";
 import { ThreeDots } from "react-loader-spinner";
 import { fetchProfile } from "@/services/queries";
+import Link from "next/link";
 
 function NavBar() {
   const { phoneNumber, setPhoneNumber } = useContext(Context);
@@ -78,19 +79,41 @@ function NavBar() {
       <div className="z-100 flex justify-around w-full h-[64px] py-3 shadow-sm shadow-[#00000040] fixed top-0 left-0 bg-[#FFFFFF]">
         <Image
           onClick={sideHandler}
-          className="relative cursor-pointer w-[34px] h-[34px]"
+          className="relative cursor-pointer w-[34px] h-[34px] md:hidden"
           src="/svg/hambergurMenu.svg"
           alt="hambergur menu"
           width={34}
           height={34}
         />
 
+        <Image
+          src={"/img/Torino-logo.png"}
+          alt={"torino"}
+          width={146}
+          height={44}
+          className="w-[146px] h-[44px] mr-15 hidden md:block"
+        />
+        <div className="md:flex items-center justify-center gap-10 text-[16px] text-[#282828] hidden ">
+          <Link className="hover:text-[#28A745] focus:text-[#28A745]" href="/">
+            صفحه اصلی
+          </Link>
+          <Link className="hover:text-[#28A745] focus:text-[#28A745]" href="">
+            خدمات گردشگری
+          </Link>
+          <Link className="hover:text-[#28A745] focus:text-[#28A745]" href="">
+            درباره ما
+          </Link>
+          <Link className="hover:text-[#28A745] focus:text-[#28A745]" href="">
+            تماس با ما
+          </Link>
+        </div>
+
         {isLoading ? (
           <span className="text-sm text-gray-500">
             <ThreeDots width={50} />
           </span>
         ) : phoneNumberToShow ? (
-          <div className="flex items-center justify-around w-[146px] h-[38px] ">
+          <div className="flex items-center justify-around w-[146px] h-[38px] md:ml-15 ">
             <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
             <span className="text-lg font-medium text-green-600">
               {Number(phoneNumber).toLocaleString("fa-IR", {
@@ -131,13 +154,6 @@ function NavBar() {
       {isSideOpen ? (
         <SideMenu ref={sideMenuRef} setIsSideOpen={setIsSideOpen} />
       ) : null}
-
-      {/* <div>
-          <Link href="">صفحه اصلی</Link>
-          <Link href="">خدمات گردشگری</Link>
-          <Link href="">درباره ما</Link>
-          <Link href="">تماس با ما</Link>
-        </div> */}
     </>
   );
 }

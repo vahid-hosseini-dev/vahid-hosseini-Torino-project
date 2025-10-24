@@ -27,46 +27,46 @@ function Footer() {
           <div className="flex justify-center md:justify-between md:flex-col-reverse gap-10 my-5 md:my-0">
             <div className="flex flex-wrap max-w-[150px] md:max-w-[500px] justify-start gap-5">
               <Image
-                className="w-[35px][38px]"
-                src="/img/ecunion.png"
+                className="w-[35px] h-[38px] md:w-[75px] md:h-[75px]"
+                src="/img/ecunion-35c3c933.png"
                 alt="ecunion"
-                width={35}
-                height={38}
+                width={75}
+                height={75}
               />
               <Image
-                className="w-[35px] h-[38px]"
-                src="/img/samandehi.png"
+                className="w-[35px] h-[38px] md:w-[75px] md:h-[75px]"
+                src="/img/samandehi-6e2b448a.png"
                 alt="samandehi"
-                width={35}
-                height={38}
+                width={75}
+                height={75}
               />
               <Image
-                className="w-[35px] h-[38px]"
-                src="/img/aira.png"
+                className="w-[35px] h-[38px] md:w-[75px] md:h-[75px]"
+                src="/img/aira-682b7c43.png"
                 alt="aria"
-                width={35}
-                height={38}
+                width={75}
+                height={75}
               />
               <Image
-                className="w-[35px] h-[38px]"
-                src="/img/state-airline.png"
+                className="w-[35px] h-[38px] md:w-[75px] md:h-[75px]"
+                src="/img/state-airline-f45c55b2 1.png"
                 alt="airline"
-                width={35}
-                height={38}
+                width={75}
+                height={75}
               />
               <Image
-                className="w-[35px] h-[38px]"
-                src="/img/passenger-rights.png"
+                className="w-[35px] h-[38px] md:w-[75px] md:h-[75px]"
+                src="/img/passenger-rights-48368f81 1.png"
                 alt="passengers"
-                width={35}
-                height={38}
+                width={75}
+                height={75}
               />
             </div>
 
             <div className="flex flex-col justify-center items-end gap-2">
               <Image
-                className="w-[35px] h-auto"
-                src="/img/Torino.png"
+                className="w-[35px] h-auto md:w-[146px] md:h-[44px]"
+                src="/img/Torino-logo.png"
                 alt="Torino"
                 width={100}
                 height={100}
@@ -80,7 +80,7 @@ function Footer() {
         </div>
 
         <div className="border-t w-full border-gray-400/50"></div>
-        <div className="text-[12px] md:text-[14px] mt-5">
+        <div className="text-[12px] md:text-[16px] mt-5">
           <p>کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
         </div>
       </footer>

@@ -46,10 +46,10 @@ function SearchForm() {
 
   return (
     <form
-      className="flex flex-col p-5 w-fit m-auto"
+      className="flex flex-col p-5 w-fit m-auto md:flex-row md:items-center md:gap-5"
       onSubmit={handleSubmit(submitHandler)}
     >
-      <div className="flex justify-between items-center my-2">
+      <div className="flex justify-between items-center my-2 gap-5">
         <select
           {...register("originId")}
           className="outline-0 flex justify-center items-center gap-2 w-[160px] h-[47px] rounded-xl bg-white text-[#00000080] border border-[#00000026]"
@@ -105,7 +105,9 @@ function SearchForm() {
         )}
       />
       <input
-        className="cursor-pointer bg-[#28A745] text-white w-[328px] h-[47px] mb-10 mt-5 rounded-2xl hover:active:scale-90 hover:focus:scale-100  hover:scale-95 transition-all ease-in-out duration-150"
+        className="cursor-pointer bg-[#28A745] text-white w-[328px] h-[47px] mb-10 mt-5 rounded-2xl hover:active:scale-90 hover:focus:scale-100  hover:scale-95 transition-all ease-in-out duration-150
+        md:w-[190px] md:h-[51px] md:my-0
+        "
         type="submit"
         value={"جستجو"}
       />

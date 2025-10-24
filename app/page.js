@@ -21,7 +21,7 @@ export default async function Home({ searchParams }) {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center ">
       <Header />
       <SearchForm />
       <TourList tourData={data} />
