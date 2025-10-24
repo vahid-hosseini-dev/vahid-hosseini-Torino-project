@@ -31,7 +31,7 @@ function Slider() {
             <Image
               src={src}
               alt={`carousel-${index}`}
-              className="w-[300px] h-[300px] "
+              className="w-[300px] h-[300px] md:w-[400px] md:h-[450px] "
               width={300}
               height={300}
             />

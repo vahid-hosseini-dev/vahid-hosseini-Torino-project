@@ -8,7 +8,9 @@ export default async function Home({ searchParams }) {
   let data;
   let error = false;
 
-  const result = await serverFetch("/tour", searchParams, { cache: "no-store" });
+  const result = await serverFetch("/tour", searchParams, {
+    cache: "no-store",
+  });
 
   if (result.error) {
     error = true;
@@ -16,7 +18,7 @@ export default async function Home({ searchParams }) {
     data = result;
   }
 
-  if (error) {
+  if (!result) {
     return <ServerDisconnect />;
   }
 

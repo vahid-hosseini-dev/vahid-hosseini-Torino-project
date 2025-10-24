@@ -116,15 +116,21 @@ function NavBar() {
           </span>
         ) : phoneNumberToShow ? (
           <div className="flex items-center justify-around w-[146px] h-[38px] md:ml-15 ">
-            <Image width={14} height={14} alt="icon" src="/svg/profile.svg" />
-            <span className="text-lg font-medium text-green-600">
+            <Image
+              className="md:w-[24px] md:h-[24px]"
+              width={14}
+              height={14}
+              alt="icon"
+              src="/svg/profile.svg"
+            />
+            <span className="text-lg md:text-[20px] font-medium text-green-600">
               {Number(phoneNumber).toLocaleString("fa-IR", {
                 useGrouping: false,
               })}
             </span>
             <Image
               onClick={menuHandler}
-              className="relative cursor-pointer w-[14px] h-[14px]"
+              className="relative cursor-pointer w-[14px] h-[14px] md:w-[24px] md:h-[24px]"
               width={14}
               height={14}
               alt="icon"
@@ -142,12 +148,21 @@ function NavBar() {
         ) : (
           <button onClick={() => setIsModalOpen(true)}>
             <Image
-              className="cursor-pointer hover:scale-105 transition-all duration-75 ease-in-out"
+              className="cursor-pointer hover:scale-105 transition-all duration-75 ease-in-out md:hidden "
               src="/svg/SignInButton.svg"
               alt="sign in"
               width={34}
               height={34}
             />
+            <button className=" hidden cursor-pointer md:flex items-center justify-center md:gap-2 text-[#28A745]  w-[166px] h-[44px] rounded-lg border-2 border-[#28A745]">
+              <Image
+                src={"/svg/profile.svg"}
+                alt="login"
+                width={24}
+                height={24}
+              />
+              ورود | ثبت نام
+            </button>
           </button>
         )}
       </div>
