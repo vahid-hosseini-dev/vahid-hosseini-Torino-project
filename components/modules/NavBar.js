@@ -86,13 +86,15 @@ function NavBar() {
           height={34}
         />
 
-        <Image
-          src={"/img/Torino-logo.png"}
-          alt={"torino"}
-          width={146}
-          height={44}
-          className="w-[146px] h-[44px] mr-15 hidden md:block"
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/img/Torino-logo.png"}
+            alt={"torino"}
+            width={146}
+            height={44}
+            className="w-[146px] h-[44px] mr-15 hidden md:block"
+          />
+        </Link>
         <div className="md:flex items-center justify-center gap-10 text-[16px] text-[#282828] hidden ">
           <Link className="hover:text-[#28A745] focus:text-[#28A745]" href="/">
             صفحه اصلی

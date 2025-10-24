@@ -22,7 +22,7 @@
   }
 
   @font-face {
-    font-family: "YekanBakh";
+    font-family: "YekanBakhBold";
     src: url("/fonts/YekanBakhBold.woff") format("woff");
     font-weight: 600;
     font-style: normal;
@@ -45,4 +45,12 @@
 
 .custom-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.swiper-pagination-bullet {
+  background-color: #28a745 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: green !important;
 }

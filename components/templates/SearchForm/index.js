@@ -49,7 +49,7 @@ function SearchForm() {
       className="flex flex-col p-5 w-fit m-auto md:flex-row md:items-center md:gap-5"
       onSubmit={handleSubmit(submitHandler)}
     >
-      <div className="flex justify-between items-center my-2 gap-5">
+      <div className="flex justify-between items-center my-2 gap-2 mb:gap-5">
         <select
           {...register("originId")}
           className="outline-0 flex justify-center items-center gap-2 w-[160px] h-[47px] rounded-xl bg-white text-[#00000080] border border-[#00000026]"

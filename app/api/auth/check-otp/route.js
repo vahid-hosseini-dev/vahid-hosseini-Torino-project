@@ -13,7 +13,7 @@ export async function POST(req) {
       value: data.accessToken,
       httpOnly: false,
       path: "/",
-      maxAge: 60 * 60 * 24,
+      maxAge: 60 * 60 * 24 * 2,
     });
 
     cookies().set({
