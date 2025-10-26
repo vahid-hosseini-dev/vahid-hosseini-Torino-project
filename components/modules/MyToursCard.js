@@ -26,7 +26,7 @@ function MyToursCard({
 
   return (
     <>
-      <div className="relative flex flex-col justify-around w-[328px] h-[202px] border border-[#00000033] rounded-[10px] pt-5 mt-30 bg-white">
+      <div className="relative flex flex-col justify-around w-[328px] md:w-[800px] h-[202px] border border-[#00000033] rounded-[10px] pt-5 mt-30 bg-white">
         <div className="flex justify-around items-center">
           <div className="flex items-center">
             <Image

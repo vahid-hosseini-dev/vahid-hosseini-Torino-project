@@ -36,8 +36,8 @@ function Transaction() {
 
   return (
     <>
-      <div className="justify-between items-center mt-20">
-        <table className="w-full h-auto border-separate border-[#0000001F] border rounded-lg overflow-hidden">
+      <div className="justify-between items-center mt-20 md:mt-32 md:w-[800px]">
+        <table className="w-full h-auto border-separate border-[#0000001F] border rounded-lg overflow-hidden md:text-center">
           <thead>
             <tr className="bg-[#F8F8F8]">
               <th className="border-b border-[#DBDBDB] py-2 px-4 text-center text-[12px] text-[#282828CC]">

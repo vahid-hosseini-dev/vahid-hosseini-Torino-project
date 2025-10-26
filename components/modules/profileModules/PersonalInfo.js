@@ -58,7 +58,7 @@ function PersonalInfo() {
 
   return (
     <div>
-      <div className="w-[328px] h-auto border border-[#00000033] rounded-[10px] p-5 bg-white my-3">
+      <div className="w-[328px] md:w-[800px] h-auto border border-[#00000033] rounded-[10px] p-5 bg-white my-3">
         <div className="flex justify-between">
           {show ? (
             <p className="text-[18px]">ویرایش اطلاعات شخصی</p>

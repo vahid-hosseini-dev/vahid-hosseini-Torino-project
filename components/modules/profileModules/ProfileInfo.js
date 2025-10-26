@@ -44,7 +44,7 @@ function ProfileInfo() {
   const phoneNumber = localStorage.getItem("phoneNumber");
   return (
     <>
-      <div className="w-[328px] h-[169px] border border-[#00000033] rounded-[10px] p-5 mt-30 bg-white">
+      <div className="w-[328px] md:w-[800px] md-h-[115px] h-[169px] border border-[#00000033] rounded-[10px] p-5 mt-30 bg-white">
         <p className="text-[18px]">اطلاعات حساب کاربری</p>
 
         <div className="flex justify-between items-center mt-5">

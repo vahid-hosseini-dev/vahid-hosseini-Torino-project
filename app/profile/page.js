@@ -3,7 +3,7 @@
 import Tabs from "@/components/modules/Tabs";
 import MyTours from "@/components/templates/MyTours";
 import MyProfile from "@/components/templates/Profile";
-import Transaction from "@/components/templates/Transaction";
+import Transaction from "@/components/modules/Transaction";
 import { useState } from "react";
 
 function Profile() {
@@ -25,10 +25,10 @@ function Profile() {
   };
 
   return (
-    <>
+    <div className="md:flex md:w-[1440px] md:justify-around">
       <Tabs setCurrentComponent={setCurrentComponent} />
-      <div className="mt-12 mb-5 ">{renderComponent()}</div>
-    </>
+      <div className="mt-12 mb-5 md:mx-0 my-0 ">{renderComponent()}</div>
+    </div>
   );
 }
 

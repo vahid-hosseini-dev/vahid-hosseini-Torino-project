@@ -29,7 +29,7 @@ async function TourDetails({ params }) {
   } = data;
 
   return (
-    <div className="flex flex-col justify-start items-center mt-15">
+    <div className="flex flex-col md:flex-row justify-start items-center mt-15 md:my-50">
       <div>
         <Image
           src={image}
@@ -39,14 +39,14 @@ async function TourDetails({ params }) {
           className="w-[330px] h-[220px] rounded-xl"
         />
       </div>
-      <div className="flex mt-5 items-center">
-        <span className="text-2xl ml-10">{title}</span>
+      <div className="flex mt-5 items-center md:flex-col md:mx-10 ">
+        <span className="text-2xl ml-10 md:mx-0">{title}</span>
         <span className="text-[15px]">
           {formatTourDuration(startDate, endDate)}
         </span>
       </div>
       <div>
-        <div className="flex justify-between text-[#7D7D7D] text-[13px] mt-5">
+        <div className="flex justify-between text-[#7D7D7D] text-[13px] mt-5 ">
           <Image src={"/svg/user-tick.svg"} alt="icon" width={14} height={14} />
           <span>تورلیدر از مبدا</span>
           <Image src={"/svg/map.svg"} alt="icon" width={14} height={14} />

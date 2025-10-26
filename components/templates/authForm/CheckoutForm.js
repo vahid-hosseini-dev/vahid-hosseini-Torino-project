@@ -60,7 +60,7 @@ function CheckoutForm() {
 
   return (
     <>
-      <div className="flex flex-col justify-center px-5 mt-25 mb-5 w-[328px] h-[359px] border border-[#00000033] rounded-[10px]">
+      <div className="flex flex-col justify-center px-5 mt-25 mb-5 w-[328px] h-[359px] border border-[#00000033] rounded-[10px] md:">
         <div className="flex">
           <Image
             src={"/svg/profile1.svg"}
