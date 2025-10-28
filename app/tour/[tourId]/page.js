@@ -3,7 +3,7 @@ import Image from "next/image";
 import ReserveButton from "@/components/modules/ReserveButton";
 import formatTourDuration from "@/utils/formatTourDuration";
 
-export const revalidate = 10 * 60;
+export const revalidate = 600;
 
 export async function generateStaticParams() {
   const tours = await api.get("/tour");
