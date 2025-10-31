@@ -26,7 +26,7 @@ function Transaction() {
 
   if (!tourData) {
     return (
-      <div>
+      <div className="flex justify-center items-center">
         <ThreeDots />
       </div>
     );

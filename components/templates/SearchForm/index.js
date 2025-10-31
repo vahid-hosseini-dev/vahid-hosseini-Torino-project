@@ -100,7 +100,8 @@ function SearchForm() {
             value={value && { from: value?.startDate, to: value?.endDate }}
             onChange={(e) => onChange({ startDate: e.from, endDate: e.to })}
             range
-            inputClass=" outline-0 text-center gap-2 w-[328px] h-[47px] bg-white border border-[#00000026] rounded-xl"
+            placeholder="از تاریخ - تا تاریخ"
+            inputClass="outline-0 text-center gap-2 w-[328px] h-[47px] bg-white border border-[#00000026] rounded-xl"
           />
         )}
       />

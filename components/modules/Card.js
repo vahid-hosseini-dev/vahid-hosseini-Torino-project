@@ -12,27 +12,11 @@ function Card({ data }) {
     router.push(`/tour/${id}`);
   };
 
-  const baseLocal = process.env.NEXT_PUBLIC_BASE_URL;
-  const baseVercel = process.env.NEXT_PUBLIC_BASE_URL_VERCEL;
-
-  let imageUrl = image;
-
-  if (image.includes(baseLocal)) {
-    imageUrl = image;
-  } else {
-    const parts = image.split("/static/");
-    if (parts.length > 1) {
-      imageUrl = `${baseVercel}/static/${parts[1]}`;
-    } else {
-      imageUrl = `${baseVercel}${image}`;
-    }
-  }
-
   return (
     <div className=" flex flex-col justify-start w-[327px] h-[277px] m-5 bg-white border border-[#0000001F] rounded-xl overflow-hidden hover:shadow-lg hover:scale-105 transition-all duration-250 ease-in-out">
       <Image
         className="w-[327px] h-[160px]"
-        src={imageUrl}
+        src={image}
         alt="arbil"
         width={1000}
         height={1000}

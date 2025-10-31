@@ -27,6 +27,7 @@ function PersonalInfo() {
 
       setFormData((prevData) => ({
         ...prevData,
+        fullName: value,
         firstName: first || "",
         lastName: last || "",
       }));

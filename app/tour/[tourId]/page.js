@@ -3,7 +3,7 @@ import Image from "next/image";
 import ReserveButton from "@/components/modules/ReserveButton";
 import formatTourDuration from "@/utils/formatTourDuration";
 
-export const revalidate = 600;
+export const revalidate = 10;
 
 export async function generateStaticParams() {
   const tours = await api.get("/tour");
@@ -29,7 +29,7 @@ async function TourDetails({ params }) {
   } = data;
 
   return (
-    <div className="flex flex-col md:flex-row justify-start items-center mt-15 md:my-50">
+    <div className="flex flex-col md:flex-row justify-start items-center mt-20 md:my-50">
       <div>
         <Image
           src={image}

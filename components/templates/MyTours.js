@@ -42,7 +42,11 @@ function MyTours() {
   }, []);
 
   if (!tourData) {
-    return <div><ThreeDots/></div>;
+    return (
+      <div className="flex justify-center items-center">
+        <ThreeDots />
+      </div>
+    );
   }
 
   return (

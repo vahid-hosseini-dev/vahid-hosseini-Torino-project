@@ -28,7 +28,7 @@ function ProfileMenu({ phoneNumber, setIsMenuOpen }) {
           />
           <Image
             className="relative md:mr-[10px]"
-            src={"/svg/ellipse.svg"}
+            src={"/svg/Ellipse.svg"}
             alt="profile"
             width={28}
             height={28}
