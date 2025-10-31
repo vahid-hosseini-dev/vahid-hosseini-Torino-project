@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="flex flex-col justify-center items-center mt-15 ">
       <Image
-        src={"/img/Header.png"}
+        src={"/img/header.png"}
         alt="header"
         width={1440}
         height={350}
