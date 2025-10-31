@@ -8,6 +8,11 @@ const nextConfig = {
         port: "6500",
         pathname: "/static/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "torino-api-ecru.vercel.app",
+        pathname: "/static/images/**",
+      },
     ],
   },
 };
